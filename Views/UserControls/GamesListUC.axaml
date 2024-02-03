@@ -1,0 +1,84 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:userControls="clr-namespace:GameLibDesktop.Views.UserControls"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+             x:Class="GameLibDesktop.Views.UserControls.GamesListUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal"
+                    Margin="20 0 0 0">
+            <TextBox Width="200" Height="25" Watermark="Поиск" Text="{Binding SearchText}"
+                     Foreground="White" Background="Black" Margin="0 0 20 0"/>
+            
+            <ComboBox Width="200" Height="25" SelectedIndex="0"
+                      ItemsSource="{Binding DevelopersCBList}"
+                      SelectedItem="0"
+                      SelectedValue="{Binding SelectedDeveloper}"
+                      VerticalAlignment="Center" Foreground="White" Background="Black">
+                    
+            </ComboBox>
+            
+            <ComboBox Width="200" Height="25" SelectedIndex="0"
+                      ItemsSource="{Binding PublishersCBList}"
+                      SelectedItem="0"
+                      SelectedValue="{Binding SelectedPublisher}"
+                      VerticalAlignment="Center" Background="Black" Margin="20 0 30 0"
+                      Foreground="White">
+                    
+            </ComboBox>
+        </StackPanel>
+        
+        <ListBox Grid.Column="0" Grid.ColumnSpan="5"
+                 Grid.Row="1" Grid.RowSpan="4"
+                 ItemsSource="{Binding GamesList}" HorizontalAlignment="Center"
+                 Margin="0 0 0 20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="White" BorderThickness="3" CornerRadius="10" Background="#949F94" 
+                            Height="400">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Margin="30 0 30 20">
+                                <TextBlock TextAlignment="Center" Text="{Binding GameName}" FontWeight="Bold"
+                                           Margin="0 30 0 5" FontSize="16"/>
+                                <TextBlock TextAlignment="Left" TextWrapping="Wrap" Text="{Binding Description}"/>
+                            </StackPanel>
+                            
+                            <Image Grid.Row="1" Source="{Binding MainImage}"
+                                   Height="130"/>
+                            
+                            <StackPanel Grid.Row="2" Margin="30 0 0 0">
+                                <TextBlock Text="{Binding Developer}" FontWeight="Bold"
+                                           Margin="0 15 0 0" FontSize="16"/>
+                                <TextBlock Text="{Binding Publisher}" FontWeight="Bold"
+                                           Margin="0 15 0 0" FontSize="16"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

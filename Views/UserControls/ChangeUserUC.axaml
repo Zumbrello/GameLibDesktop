@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+             x:Class="GameLibDesktop.Views.UserControls.ChangeUserUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Логин: " FontSize="25" FontWeight="Bold"
+                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                   HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Почта: " FontSize="25" FontWeight="Bold"
+                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                   HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Пароль: " FontSize="25" FontWeight="Bold"
+                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                   HorizontalAlignment="Right"/>
+        
+        
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Watermark="Логин" FontSize="25" FontWeight="Bold"
+                 Foreground="White" VerticalAlignment="Center" Margin="20 0 20 0" Text="{Binding LoginText}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Watermark="Почта" FontSize="25" FontWeight="Bold"
+                   Foreground="White" VerticalAlignment="Center" Margin="20 0 20 0" Text="{Binding EmailText}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Watermark="Пароль" FontSize="25" FontWeight="Bold"
+                 Foreground="White" VerticalAlignment="Center" Margin="20 0 20 0" Text="{Binding PasswordText}"
+                 PasswordChar="*"/>
+        
+        <Button Grid.Row="4" Grid.Column="1" Content="Найти" FontSize="20" FontWeight="Bold"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Command="{Binding FindUser}"/>
+        <Button Grid.Row="4" Grid.Column="2" Content="Изменить" FontSize="20" FontWeight="Bold"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Command="{Binding ChangeUser}"/>
+        <Button Grid.Row="4" Grid.Column="3" Content="Удалить" FontSize="20" FontWeight="Bold"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Command="{Binding DeleteUser}"/>
+        
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Margin="0 20 0 0"
+                   TextAlignment="Center" Foreground="Red" FontSize="25" FontWeight="Bold" Text="{Binding StatusText}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameLibDesktop.Views.UserControls.MenuUC">
+    <StackPanel HorizontalAlignment="Left">
+        <Button Content="Каталог" Command="{Binding Catalog}"
+                FontSize="17" FontWeight="Bold" Foreground="White"
+                Margin="0 10 0 10"/>
+        
+        <Button Content="Пользователи" Command="{Binding Users}"
+                FontSize="17" FontWeight="Bold" Foreground="White"
+                Margin="0 10 0 10"/>
+        
+        <Button Content="Добавить игру" Command="{Binding AddGame}"
+                FontSize="17" FontWeight="Bold" Foreground="White"
+                Margin="0 10 0 10"/>
+        
+        <Button Content="Выйти из аккаунта" Command="{Binding Logout}"
+                FontSize="17" FontWeight="Bold" Foreground="White"
+                Margin="0 10 0 10"/>
+        
+        <Button Content="Закрыть" Command="{Binding Exit}"
+                FontSize="17" FontWeight="Bold" Foreground="White"
+                Margin="0 10 0 10"/>
+    </StackPanel>
+</UserControl>

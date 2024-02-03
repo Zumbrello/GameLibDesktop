@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameLibDesktop.Views.UserControls.AuthUC">
+<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>   
+            <ColumnDefinition/>  
+            <ColumnDefinition/>  
+            <ColumnDefinition/>  
+            <ColumnDefinition/>  
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>  
+            <RowDefinition/>   
+            <RowDefinition/>   
+            <RowDefinition/>    
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Вход" FontSize="25" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0 50 0 0"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" 
+                    Orientation="Vertical" Height="60" HorizontalAlignment="Center" Margin="0 100 0 0">
+            
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 20">
+                
+                <TextBlock  Text="Логин" Name="LoginLabel" Height="20" Margin="0 0 10 0" 
+                            FontSize="16" FontWeight="Bold" Width="70"/>    
+                
+                <TextBox Watermark="Логин" x:Name="LoginEdit" Height="15" Width="200"
+                            Text="{Binding Path=LoginText}"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 20">
+
+                <TextBlock Text="Пароль" Name="PasswordLabel" Height="20" Margin="0 0 10 0" 
+                            FontSize="16" FontWeight="Bold" Width="70"/>
+                
+                <TextBox Watermark="Пароль" x:Name="PasswordEdit" Height="15" Width="200" PasswordChar="*"
+                            Text="{Binding Path=PasswordText}"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Name="EnterBtn" Content="Войти" Width="80" Background="#FF8100"
+                        HorizontalContentAlignment="Center" IsEnabled="True" Command="{Binding EnterBtn}"/>
+            </StackPanel>
+
+            <TextBlock  Name="StatusEdit" Height="20" FontSize="12" Margin="0 20 0 0" FontWeight="Bold" 
+                        Foreground="Red" HorizontalAlignment="Center" Text="{Binding Path=StatusText}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
