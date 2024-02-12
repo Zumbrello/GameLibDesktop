@@ -13,25 +13,25 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GameLibDesktop
-build_property.ProjectDir = /home/sofya/Рабочий стол/GameLibDesktop/
+build_property.ProjectDir = C:\Users\Zumbrello\Downloads\GameLibDesktop-master\
 
-[/home/sofya/Рабочий стол/GameLibDesktop/App.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/MainWindow.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/UserControls/AddGameUC.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/UserControls/AddGameUC.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/UserControls/AuthUC.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/UserControls/AuthUC.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/UserControls/ChangeUserUC.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/UserControls/ChangeUserUC.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/UserControls/GamesListUC.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/UserControls/GamesListUC.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/sofya/Рабочий стол/GameLibDesktop/Views/UserControls/MenuUC.axaml]
+[C:/Users/Zumbrello/Downloads/GameLibDesktop-master/Views/UserControls/MenuUC.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

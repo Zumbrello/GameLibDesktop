@@ -2,79 +2,95 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GameLibDesktop.ViewModels"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
              x:Class="GameLibDesktop.Views.UserControls.AddGameUC">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    
+    <StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Название: " FontSize="20" FontWeight="Bold" Width="200"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Watermark="Название" FontSize="10" FontWeight="Bold" Width="450"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" 
+                             TextWrapping="Wrap" Text="{Binding TitleText}" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+                   <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                       <TextBlock Grid.Row="1" Grid.Column="0" Text="Разработчик: " FontSize="20" FontWeight="Bold" Width="200"
+                                  Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                                  HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                       <ComboBox Grid.Row="1" Grid.Column="1" FontSize="10" FontWeight="Bold" HorizontalAlignment="Stretch" ItemsSource="{Binding DevelopersCBList}"
+                                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" SelectedIndex="0"
+                                 SelectedValue="{Binding SelectedDeveloper}" Width="450"/>
+                   </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Издатель: " FontSize="20" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap" Width="200"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" FontSize="10" FontWeight="Bold"
+                              Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" SelectedIndex="0"
+                              HorizontalAlignment="Stretch" ItemsSource="{Binding PublishersCBList}"
+                              SelectedValue="{Binding SelectedPublisher}" Width="450"/>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Мин.требования: " Width="200" FontSize="20" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" FontSize="10" FontWeight="Bold"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  Text="{Binding MinReqText}" Width="450"/>
+                    
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="Макс.требования: " FontSize="20" Width="200" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" FontSize="10" FontWeight="Bold"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  Width="450" Text="{Binding MaxReqText}"/>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="Дата выхода: " Width="200" FontSize="20" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="1" Grid.Column="4" Watermark="30.12.2000" FontSize="10" FontWeight="Bold"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap" Width="450"  Text="{Binding ReleaseDateText}"/>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="Изображение: " Width="200" FontSize="20" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="2" Grid.Column="4" Watermark="Url изображения" FontSize="10" FontWeight="Bold"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap" Width="450"  Text="{Binding ImageUrlText}"/>
+                    
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="Описание: " FontSize="20" Width="200" FontWeight="Bold"
+                               Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
+                               HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Watermark="Описание" FontSize="10" FontWeight="Bold"
+                             Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap" Width="450" ScrollViewer.HorizontalScrollBarVisibility="Auto" Text="{Binding DescriptionText}"/>
+                </StackPanel>
+                
+                <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 20 0 0"
+                    TextAlignment="Center" Foreground="Red" FontSize="20" FontWeight="Bold" Text="{Binding StatusText}"/>
+            </StackPanel>
+        </ScrollViewer>
         
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Разработчик: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Издатель: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Мин.требования: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        
-        
-        <TextBox Grid.Row="0" Grid.Column="1" Watermark="Название" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap" Text="{Binding TitleText}"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" FontSize="10" FontWeight="Bold" HorizontalAlignment="Stretch" ItemsSource="{Binding DevelopersCBList}"
-                   Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" SelectedIndex="0"
-                   SelectedValue="{Binding SelectedDeveloper}"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" SelectedIndex="0"
-                 HorizontalAlignment="Stretch" ItemsSource="{Binding PublishersCBList}"
-                 SelectedValue="{Binding SelectedPublisher}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap" 
-                 Text="{Binding MinReqText}"/>
-        
-        <TextBlock Grid.Row="0" Grid.Column="3" Text="Макс.требования: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="1" Grid.Column="3" Text="Дата выхода: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="Изображение: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="3" Grid.Column="2" Text="Описание: " FontSize="20" FontWeight="Bold"
-                   Foreground="Red" VerticalAlignment="Center" Margin="20 0 0 0"
-                   HorizontalAlignment="Left" TextWrapping="Wrap"/>
-        
-        
-        <TextBox Grid.Row="0" Grid.Column="4" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  Text="{Binding MaxReqText}"/>
-        <TextBox Grid.Row="1" Grid.Column="4" Watermark="30.12.2000" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  Text="{Binding ReleaseDateText}"/>
-        <TextBox Grid.Row="2" Grid.Column="4" Watermark="Изображение" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  Text="{Binding ImageUrlText}"/>
-        <TextBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Watermark="Описание" FontSize="10" FontWeight="Bold"
-                 Foreground="White" VerticalAlignment="Stretch" Margin="20 10 20 10" TextWrapping="Wrap"  ScrollViewer.HorizontalScrollBarVisibility="Auto" Text="{Binding DescriptionText}"/>
-        
-        <Button Grid.Row="4" Grid.Column="0" Content="Добавить" FontSize="20" FontWeight="Bold"
-                HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding AddGame}"/>
-        
-        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 20 0 0"
-                   TextAlignment="Center" Foreground="Red" FontSize="20" FontWeight="Bold" Text="{Binding StatusText}"/>
-    </Grid>
+        <StackPanel Orientation="Horizontal" Background="Aqua" HorizontalAlignment="Stretch" Width="500" Height="50">
+            
+            <Button Content="Добавить" FontSize="20" FontWeight="Bold" IsVisible="{Binding AddBtnVisible}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding AddGame}" 
+                    Margin="0 0 25 0" x:DataType="viewModels:AddGameVM"/> 
+                
+            <Button Content="Изменить" FontSize="20" FontWeight="Bold" IsVisible="{Binding ChangeBtnVisible}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding ChangeGame}" 
+                    Margin="0 0 25 0" x:DataType="viewModels:AddGameVM"/> 
+                
+            <Button Content="Удалить" FontSize="20" FontWeight="Bold" IsVisible="{Binding DeleteBtnVisible}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding DeleteGame}" 
+                    Margin="0 0 25 0" x:DataType="viewModels:AddGameVM"/> 
+            
+        </StackPanel>
+    </StackPanel>
 </UserControl>

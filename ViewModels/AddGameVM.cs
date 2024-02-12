@@ -28,6 +28,13 @@ public class AddGameVM : ViewModelBase
     private string _SelectedDeveloper;
     private ObservableCollection<Publisher> _PublishersList;
     private ObservableCollection<Developer> _DevelopersList;
+    private bool _addBtnVisible;
+    private bool _changeBtnVisible;
+    private bool _deleteBtnVisible;
+    private int _mode;
+    private int _gameId;
+
+
     public ObservableCollection<Publisher> PublishersList
     {
         get { return _PublishersList; }
@@ -84,13 +91,29 @@ public class AddGameVM : ViewModelBase
         }
     }
 
-    public static AddGameVM GetInstance()
+    public static AddGameVM GetInstance(int mode, int GameId = 0)
     {
         if (Instance == null)
         {
             Instance = new AddGameVM();
         }
 
+        Instance._mode = mode;
+
+        if (mode == 1)
+        {
+            Instance.AddBtnVisible = false;
+            Instance.ChangeBtnVisible = true;
+            Instance.DeleteBtnVisible = true;
+            Instance._gameId = GameId;
+        }
+        else
+        {
+            Instance.AddBtnVisible = true;
+            Instance.ChangeBtnVisible = false;
+            Instance.DeleteBtnVisible = false;
+        }
+        
         Instance.ReFillLists();
         return Instance;
     }
@@ -176,6 +199,36 @@ public class AddGameVM : ViewModelBase
         }
     }
 
+    public bool AddBtnVisible
+    {
+        get { return _addBtnVisible; }
+        set
+        {
+            _addBtnVisible = value;
+            this.RaisePropertyChanged();
+        }
+    }
+    
+    public bool ChangeBtnVisible
+    {
+        get { return _changeBtnVisible; }
+        set
+        {
+            _changeBtnVisible = value;
+            this.RaisePropertyChanged();
+        }
+    }
+    
+    public bool DeleteBtnVisible
+    {
+        get { return _deleteBtnVisible; }
+        set
+        {
+            _deleteBtnVisible = value;
+            this.RaisePropertyChanged();
+        }
+    }
+
     public ICommand AddGame()
     {
         Program.wc.Headers.Clear();
@@ -203,6 +256,20 @@ public class AddGameVM : ViewModelBase
             StatusText = "Ошибка при добавлении игры";
         }
 
+        Instance = new AddGameVM();
+        MainWindowViewModel.GetInstance().CurrentControl = GamesListVM.GetInstance();
+        return null;
+    }
+
+    public ICommand ChangeGame()
+    {
+        //Запрос изменения игры
+        return null;
+    }
+    
+    public ICommand DeleteGame()
+    {
+        //Запрос удаления игры
         return null;
     }
     

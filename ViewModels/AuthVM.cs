@@ -47,6 +47,10 @@ public class AuthVM : ViewModelBase
         {
             Instance = new AuthVM();
         }
+
+        Instance.LoginText = "Zombus";
+        Instance.PasswordText = "12";
+
         Instance.StatusText = "";
         return Instance;
     }

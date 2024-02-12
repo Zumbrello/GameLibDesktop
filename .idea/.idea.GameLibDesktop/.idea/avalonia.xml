@@ -8,6 +8,7 @@
         <entry key="Views/UserControls/AddGameUC.axaml" value="GameLibDesktop.csproj" />
         <entry key="Views/UserControls/AuthUC.axaml" value="GameLibDesktop.csproj" />
         <entry key="Views/UserControls/ChangeUserUC.axaml" value="GameLibDesktop.csproj" />
+        <entry key="Views/UserControls/GamesListUC.axaml" value="GameLibDesktop.csproj" />
       </map>
     </option>
   </component>

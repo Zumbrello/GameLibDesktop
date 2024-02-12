@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reactive.Linq;
 using System.Text.Json;
 using System.Threading;
+using System.Windows.Input;
 using Avalonia.Media.Imaging;
 using DynamicData;
 using PokemonsAPI.Models;
@@ -112,12 +113,17 @@ public class GamesListVM : ViewModelBase
             Instance = new GamesListVM();
         }
         
-        Program.wc.Headers.Clear();
+   
+        return Instance;
+    }
+
+    private GamesListVM()
+    {     Program.wc.Headers.Clear();
         Program.wc.Headers.Add("Authorization", "Bearer " + MainWindowViewModel.config.AppSettings.Settings["AccessToken"].Value);
-        Instance.PublishersList = new ObservableCollection<Publisher>();
-        Instance.DevelopersList = new ObservableCollection<Developer>();
-        Instance.PublishersCBList = new List<string>(){"Все издатели"};
-        Instance.DevelopersCBList = new List<string>(){"Все разработчики"};
+        PublishersList = new ObservableCollection<Publisher>();
+        DevelopersList = new ObservableCollection<Developer>();
+        PublishersCBList = new List<string>(){"Все издатели"};
+       DevelopersCBList = new List<string>(){"Все разработчики"};
 
         var resultDevelopers = Program.wc.DownloadString( Program.HostAdress + "/api/ForAllUser/GetDevelopers");
         var developersList = JsonSerializer.Deserialize<List<Developer>>(resultDevelopers);
@@ -127,21 +133,18 @@ public class GamesListVM : ViewModelBase
 
         foreach (var publisher in publishersList)
         {
-            Instance.PublishersList.Add(publisher);
-            Instance.PublishersCBList.Add(publisher.Publisher1);
+          PublishersList.Add(publisher);
+          PublishersCBList.Add(publisher.Publisher1);
         }
 
         foreach (var developer in developersList)
         {
-            Instance.DevelopersList.Add(developer);
-            Instance.DevelopersCBList.Add(developer.Developer1);
+            DevelopersList.Add(developer);
+            DevelopersCBList.Add(developer.Developer1);
         }
-        Instance.FillList();
-        return Instance;
+        FillList();
+        
     }
-
-    private GamesListVM()
-    {}
 
     private void FillList()
     {
@@ -162,12 +165,12 @@ public class GamesListVM : ViewModelBase
             if (SelectedDeveloper != "Все разработчики" && SelectedDeveloper != null)
             {
                 gamesList = gamesList.Where(g =>
-                    g.IdPublisher == DevelopersList.Where(p => p.Developer1 == SelectedDeveloper).First().Id).ToList();
+                    g.IdDeveloper == DevelopersList.Where(p => p.Developer1 == SelectedDeveloper).First().Id).ToList();
             }
             
             if (SearchText != "" && SearchText != null)
             {
-                gamesList = gamesList.Where(g => g.GameName.Contains(SearchText)).ToList();
+                gamesList = gamesList.Where(g => g.GameName.ToLower().Contains(SearchText.ToLower())).ToList();
             }
             
             foreach (var game in gamesList)
@@ -198,5 +201,11 @@ public class GamesListVM : ViewModelBase
         {
             GamesList = new ObservableCollection<GameCard>();
         }
+    }
+
+    public ICommand OpenListItem(object gameCard)
+    {
+        MainWindowViewModel.GetInstance().CurrentControl = AddGameVM.GetInstance(1, (gameCard as GameCard).Id);
+        return null;
     }
 }

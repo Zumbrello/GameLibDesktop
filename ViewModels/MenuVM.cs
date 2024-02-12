@@ -31,7 +31,7 @@ public class MenuVM : ViewModelBase
     public ICommand AddGame()
     {
         MainWindowViewModel.GetInstance().CurrentControl = null;
-        MainWindowViewModel.GetInstance().CurrentControl = AddGameVM.GetInstance();
+        MainWindowViewModel.GetInstance().CurrentControl = AddGameVM.GetInstance(0);
         return null;
     }
 

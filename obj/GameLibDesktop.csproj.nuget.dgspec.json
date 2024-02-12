@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/sofya/Рабочий стол/GameLibDesktop/GameLibDesktop.csproj": {}
+    "C:\\Users\\Zumbrello\\Downloads\\GameLibDesktop-master\\GameLibDesktop.csproj": {}
   },
   "projects": {
-    "/home/sofya/Рабочий стол/GameLibDesktop/GameLibDesktop.csproj": {
+    "C:\\Users\\Zumbrello\\Downloads\\GameLibDesktop-master\\GameLibDesktop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/sofya/Рабочий стол/GameLibDesktop/GameLibDesktop.csproj",
+        "projectUniqueName": "C:\\Users\\Zumbrello\\Downloads\\GameLibDesktop-master\\GameLibDesktop.csproj",
         "projectName": "GameLibDesktop",
-        "projectPath": "/home/sofya/Рабочий стол/GameLibDesktop/GameLibDesktop.csproj",
-        "packagesPath": "/home/sofya/.nuget/packages/",
-        "outputPath": "/home/sofya/Рабочий стол/GameLibDesktop/obj/",
+        "projectPath": "C:\\Users\\Zumbrello\\Downloads\\GameLibDesktop-master\\GameLibDesktop.csproj",
+        "packagesPath": "C:\\Users\\Zumbrello\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zumbrello\\Downloads\\GameLibDesktop-master\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/sofya/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Zumbrello\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.115/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

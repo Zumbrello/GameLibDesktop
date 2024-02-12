@@ -10,6 +10,6 @@ public partial class AddGameUC : UserControl
     public AddGameUC()
     {
         InitializeComponent();
-        DataContext = AddGameVM.GetInstance();
+        DataContext = AddGameVM.GetInstance(0);
     }
 }
