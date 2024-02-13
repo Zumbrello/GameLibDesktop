@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Windows.Input;
-using PokemonsAPI.Models;
+using GameLibDesktop.Models;
 using ReactiveUI;
 
 namespace GameLibDesktop.ViewModels;
@@ -32,7 +32,7 @@ public class AddGameVM : ViewModelBase
     private bool _changeBtnVisible;
     private bool _deleteBtnVisible;
     private int _mode;
-    private int _gameId;
+    private GameCard _game;
 
 
     public ObservableCollection<Publisher> PublishersList
@@ -91,21 +91,30 @@ public class AddGameVM : ViewModelBase
         }
     }
 
-    public static AddGameVM GetInstance(int mode, int GameId = 0)
+    public static AddGameVM GetInstance(int mode, GameCard game = null)
     {
+        // instance - экземпляр окна, который сохраняет данные при переходе между окнами
         if (Instance == null)
         {
             Instance = new AddGameVM();
         }
-
+        
         Instance._mode = mode;
-
+        // если mod == 1, идет изменение игры. если mod == 0, то добавление игры
         if (mode == 1)
         {
+            Instance.TitleText = game.GameName;
+            Instance.DescriptionText = game.Description;
+            Instance.ImageUrlText = game.ImageURl;
+            Instance.ReleaseDateText = game.ReleaseDate;
+            Instance.MinReqText = game.SystemRequestMin;
+            Instance.MaxReqText = game.SystemRequestRec;
+            Instance.SelectedDeveloper = game.Developer;
+            Instance.SelectedPublisher = game.Publisher;
             Instance.AddBtnVisible = false;
             Instance.ChangeBtnVisible = true;
             Instance.DeleteBtnVisible = true;
-            Instance._gameId = GameId;
+            Instance._game = game;
         }
         else
         {
@@ -113,7 +122,6 @@ public class AddGameVM : ViewModelBase
             Instance.ChangeBtnVisible = false;
             Instance.DeleteBtnVisible = false;
         }
-        
         Instance.ReFillLists();
         return Instance;
     }
@@ -263,7 +271,33 @@ public class AddGameVM : ViewModelBase
 
     public ICommand ChangeGame()
     {
-        //Запрос изменения игры
+        Program.wc.Headers.Clear();
+        Program.wc.Headers.Add("Authorization", "Bearer " + MainWindowViewModel.config.AppSettings.Settings["AccessToken"].Value);
+        AddGame newChangeGame = new AddGame();
+        
+        newChangeGame.Name = TitleText;
+        newChangeGame.IdDeveloper = DevelopersList.Where(d => d.Developer1 == SelectedDeveloper).First().Id;
+        newChangeGame.IdPublisher = PublishersList.Where(p => p.Publisher1 == SelectedPublisher).First().Id;
+        newChangeGame.Description = DescriptionText;
+        newChangeGame.MainImage = ImageUrlText;
+        newChangeGame.ReleaseDate = ReleaseDateText;
+        newChangeGame.SystemRequestMin = MinReqText;
+        newChangeGame.SystemRequestRec = MaxReqText;
+        
+        Program.wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+        try
+        {
+            Program.wc.UploadString(Program.HostAdress + "/api/ForAdmin/editgame", "POST",
+                JsonSerializer.Serialize(newChangeGame));
+            StatusText = "Игра успешно редактирована";
+        }
+        catch (Exception ex)
+        {
+            StatusText = "Ошибка при редактировании игры";
+        }
+
+        Instance = new AddGameVM();
+        MainWindowViewModel.GetInstance().CurrentControl = GamesListVM.GetInstance();
         return null;
     }
     

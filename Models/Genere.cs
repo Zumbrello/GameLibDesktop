@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PokemonsAPI.Models;
+namespace GameLibDesktop.Models;
 
 public partial class Genere
 {

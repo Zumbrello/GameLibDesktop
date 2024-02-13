@@ -1,4 +1,4 @@
-namespace PokemonsAPI.Models;
+namespace GameLibDesktop.Models;
 public class UserTokens {
     public string AccessToken {
         get;

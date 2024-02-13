@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Windows.Input;
-using PokemonsAPI.Models;
+using GameLibDesktop.Models;
 using ReactiveUI;
 
 namespace GameLibDesktop.ViewModels;

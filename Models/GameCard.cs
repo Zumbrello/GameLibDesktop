@@ -1,4 +1,4 @@
-namespace PokemonsAPI.Models;
+namespace GameLibDesktop.Models;
 
 public class GameCard
 {
@@ -17,6 +17,6 @@ public class GameCard
     public string? SystemRequestRec { get; set; }
 
     public string ReleaseDate { get; set; } = null!;
-
+    public string ImageURl { get; set; }
     public Avalonia.Media.Imaging.Bitmap MainImage { get; set; } = null!;
 }

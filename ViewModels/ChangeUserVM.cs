@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PokemonsAPI.Models;
+using GameLibDesktop.Models;
 using ReactiveUI;
 
 namespace GameLibDesktop.ViewModels;

@@ -11,7 +11,7 @@ using System.Threading;
 using System.Windows.Input;
 using Avalonia.Media.Imaging;
 using DynamicData;
-using PokemonsAPI.Models;
+using GameLibDesktop.Models;
 using ReactiveUI;
 
 namespace GameLibDesktop.ViewModels;
@@ -185,6 +185,7 @@ public class GamesListVM : ViewModelBase
                                     DevelopersList.Where(p => p.Id == game.IdDeveloper).First().Developer1,
                         Publisher = "Издатель: " +
                                     PublishersList.Where(p => p.Id == game.IdPublisher).First().Publisher1,
+                        ImageURl = game.MainImage,
                         MainImage = new Bitmap(new MemoryStream(Program.wc.DownloadData(game.MainImage))),
                         ReleaseDate = game.ReleaseDate,
                         SystemRequestMin = game.SystemRequestMin, SystemRequestRec = game.SystemRequestRec
@@ -205,7 +206,7 @@ public class GamesListVM : ViewModelBase
 
     public ICommand OpenListItem(object gameCard)
     {
-        MainWindowViewModel.GetInstance().CurrentControl = AddGameVM.GetInstance(1, (gameCard as GameCard).Id);
+        MainWindowViewModel.GetInstance().CurrentControl = AddGameVM.GetInstance(1, (gameCard as GameCard));
         return null;
     }
 }
